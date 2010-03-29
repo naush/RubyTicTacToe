@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/RubyTicTacToe.iml" filepath="$PROJECT_DIR$/RubyTicTacToe.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib/lib.iml" filepath="$PROJECT_DIR$/lib/lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spec/spec.iml" filepath="$PROJECT_DIR$/spec/spec.iml" />
+    </modules>
+  </component>
+</project>
+
