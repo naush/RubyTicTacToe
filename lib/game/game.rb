@@ -37,15 +37,15 @@ class Game
     return false
   end
 
-  def set_player(player)
+  def set_player(player_symbol)
     reset
 
-    if player == 'player1'
-      @player1 = Player::ManPlayer.new('O', @board)
-      @player2 = Player::MachinePlayer.new('X', @board)
-    elsif player == 'player2'
-      @player1 = Player::MachinePlayer.new('O', @board)
-      @player2 = Player::ManPlayer.new('X', @board)
+    if player_symbol == 'player1'
+      @player1 = Player::PlayerFactory::make_player(:man_player, 'O', @board)
+      @player2 = Player::PlayerFactory::make_player(:machine_player, 'X', @board)
+    elsif player_symbol == 'player2'
+      @player1 = Player::PlayerFactory::make_player(:machine_player, 'O', @board)
+      @player2 = Player::PlayerFactory::make_player(:man_player, 'X', @board)
     end
     
     @current_player = @player1
