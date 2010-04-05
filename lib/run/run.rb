@@ -1,15 +1,16 @@
 $: << File.join(File.dirname(__FILE__), "..")
+require 'java'
+require 'TTTSwing.jar'
 require 'controller/controller'
 require 'player/man_player'
 require 'player/machine_player'
-#require 'java'
+require 'ui/console'
+require 'ui/io'
 
+#ui = Java::gui.swing.Frame.new
+ui = Ui::Console.new(Ui::IO.new)
 
-#ui = Java::com.package.SwingUI.new()
-#ui.
-
-ui = ''
 controller = Controller::Controller.new(ui)
-controller.start_game(:man_player, :machine_player)
-controller.run_game
 
+ui.set_controller(controller)
+ui.new_game()

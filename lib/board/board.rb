@@ -4,6 +4,7 @@ module Board
     def initialize
       @board_string = '+++++++++'
       @all_threes = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
+      @depth = 0
     end
 
     def self.all_threes
@@ -17,21 +18,19 @@ module Board
     def set (mark, move)
       if (move >= 0 && move < 9 && get_mark(move) == '+')
         @board_string[move] = mark
+        @depth += 1
         return true
       end
       return false
     end
 
     def reset(move)
+      @depth -= 1
       @board_string[move] = '+'
     end
 
     def depth
-      depth = 0
-      for i in 0...@board_string.length
-        depth += 1 if @board_string[i].chr != '+'
-      end
-      return depth
+      return @depth
     end
 
     def occupied? (move)
@@ -40,6 +39,7 @@ module Board
 
     def clear_board
       @board_string = '+++++++++'
+      @depth = 0
     end
 
     def to_s
@@ -74,17 +74,11 @@ module Board
     end
 
     def empty?
-      for i in 0...@board_string.length
-        return false if @board_string[i].chr != '+'
-      end
-      return true
+      return @depth == 0
     end
 
     def full?
-      for i in 0...@board_string.length
-        return false if @board_string[i].chr == '+'
-      end
-      return true
+      return @depth == @board_string.length
     end
 
     def size
